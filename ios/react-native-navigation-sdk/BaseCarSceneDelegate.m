@@ -54,10 +54,13 @@
 - (void)templateApplicationScene:(CPTemplateApplicationScene *)templateApplicationScene
     didDisconnectInterfaceController:(CPInterfaceController *)interfaceController {
   [self unRegisterViewController];
-  self.interfaceController = nil;
-  self.carWindow = nil;
-  self.mapTemplate = nil;
-  self.navViewController = nil;
+  // Using setValue:forKey: allows setting nil even for properties marked as nonnull in headers if the backing store allows it,
+  // or signals intent to the compiler. Ideally, header properties should be nullable.
+  // However, for immediate fix without changing public headers:
+  _interfaceController = nil;
+  _carWindow = nil;
+  _mapTemplate = nil;
+  _navViewController = nil;
   self.viewControllerRegistered = NO;
   self.sessionAttached = NO;
 }

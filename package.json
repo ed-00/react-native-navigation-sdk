@@ -84,7 +84,7 @@
     "react-native-builder-bob": "^0.40.13",
     "react-test-renderer": "19.1.0",
     "turbo": "^1.10.7",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.3"
   },
   "peerDependencies": {
     "react": "*",
@@ -112,5 +112,13 @@
         }
       ]
     ]
+  },
+  "codegenConfig": {
+    "name": "RNNavigationSdkSpec",
+    "type": "all",
+    "jsSrcsDir": "src",
+    "android": {
+      "javaPackageName": "com.google.android.react.navsdk"
+    }
   }
 }

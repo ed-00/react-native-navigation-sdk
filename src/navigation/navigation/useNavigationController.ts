@@ -35,7 +35,9 @@ import {
 } from './types';
 import { getRouteStatusFromStringValue } from '../navigationView';
 
-const { NavModule } = NativeModules;
+import NativeNavModule from './NativeNavModule';
+
+const NavModule = NativeNavModule || NativeModules.NavModule;
 
 export const useNavigationController = (
   termsAndConditionsDialogOptions: TermsAndConditionsDialogOptions,

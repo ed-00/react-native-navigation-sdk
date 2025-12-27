@@ -61,7 +61,9 @@ export const NavigationView = (
     const _viewId = findNodeHandle(mapViewRef.current) || 0;
     if (viewId !== _viewId) {
       setViewId(_viewId);
-      onNavigationViewControllerCreated(getNavigationViewController(_viewId));
+      onNavigationViewControllerCreated(
+        getNavigationViewController(mapViewRef.current)
+      );
       onMapViewControllerCreated(getMapViewController(_viewId));
     }
   }, [
@@ -135,6 +137,11 @@ export const NavigationView = (
     },
     [props.navigationViewCallbacks]
   );
+
+
+  console.log('[NavigationView] Rendering NavigationView');
+  console.log('[NavigationView] styles.defaultStyle:', styles.defaultStyle);
+  console.log('[NavigationView] NavViewManager imported:', NavViewManager);
 
   return (
     <View style={props.style ?? styles.defaultStyle}>

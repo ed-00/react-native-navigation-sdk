@@ -17,7 +17,6 @@
 import {
   Platform,
   UIManager,
-  requireNativeComponent,
   type HostComponent,
   type ViewProps,
 } from 'react-native';
@@ -29,7 +28,7 @@ import type {
   Marker,
   Polygon,
   Polyline,
-} from '../maps';
+} from '../maps/types';
 import type {
   DirectEventHandler,
   Int32,
@@ -41,8 +40,7 @@ import type {
 } from '../navigation';
 
 // NavViewManager is responsible for managing both the regular map fragment as well as the navigation map view fragment.
-export const viewManagerName =
-  Platform.OS === 'android' ? 'NavViewManager' : 'RCTNavView';
+export const viewManagerName = 'NavViewManager';
 
 export const sendCommand = (
   viewId: number,
@@ -72,8 +70,12 @@ interface ViewManagerConfig {
   Commands: { [key: string]: number };
 }
 
+import NavViewNativeComponent from '../NavViewNativeComponent';
+
 export const commands = (
-  UIManager.getViewManagerConfig(viewManagerName) as ViewManagerConfig
+  (UIManager.getViewManagerConfig(viewManagerName) as ViewManagerConfig) || {
+    Commands: {},
+  }
 ).Commands;
 
 export interface NativeNavViewProps extends ViewProps {
@@ -97,7 +99,7 @@ export interface NativeNavViewProps extends ViewProps {
   onPromptVisibilityChanged?: DirectEventHandler<{ visible: boolean }>;
 }
 
+// Ensure the props match. The native component might be strict, so casting or wrapping might be needed if types diverge slightly.
 type NativeNavViewManagerComponentType = HostComponent<NativeNavViewProps>;
-export const NavViewManager = requireNativeComponent<NativeNavViewProps>(
-  viewManagerName
-) as NativeNavViewManagerComponentType;
+
+export const NavViewManager = NavViewNativeComponent as unknown as NativeNavViewManagerComponentType;

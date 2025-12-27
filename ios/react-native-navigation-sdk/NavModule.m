@@ -132,6 +132,8 @@ RCT_EXPORT_MODULE(NavModule);
   BOOL showAwareness =
       _tosParams[@"showOnlyDisclaimer"] != nil && [_tosParams[@"showOnlyDisclaimer"] boolValue];
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
   [GMSNavigationServices setShouldOnlyShowDriverAwarenesssDisclaimer:showAwareness];
 
   NSString *companyName = [_tosParams valueForKey:@"companyName"];
@@ -146,6 +148,7 @@ RCT_EXPORT_MODULE(NavModule);
                                                                   [self onNavigationInitError:@2];
                                                                 }
                                                               }];
+#pragma clang diagnostic pop
 }
 
 RCT_EXPORT_METHOD(initializeNavigator
@@ -319,7 +322,11 @@ RCT_EXPORT_METHOD(continueToNextDestination
       return;
     }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     [navigator continueToNextDestination];
+#pragma clang diagnostic pop
+
     resolve(@(YES));
   });
 }

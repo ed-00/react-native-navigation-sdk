@@ -18,7 +18,7 @@
 #import "CustomTypes.h"
 #import "INavigationViewCallback.h"
 #import "ObjectTranslationUtil.h"
-@import GoogleNavigation;
+#import <GoogleNavigation/GoogleNavigation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

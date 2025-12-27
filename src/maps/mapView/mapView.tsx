@@ -19,15 +19,15 @@ import { StyleSheet, View, findNodeHandle } from 'react-native';
 import { NavViewManager, type LatLng } from '../../shared';
 import {
   MapColorScheme,
-  getMapViewController,
-  MapViewType,
   type Circle,
   type GroundOverlay,
   type MapViewProps,
   type Marker,
   type Polygon,
   type Polyline,
-} from '..';
+} from '../types';
+import { getMapViewController } from './mapViewController';
+import { MapViewType } from './types';
 
 export const MapView = (props: MapViewProps): React.JSX.Element => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

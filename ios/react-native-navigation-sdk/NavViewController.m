@@ -268,7 +268,7 @@
 
   if (_navigationLightingMode == nil) {
     // Allow the SDK to determine the lighting mode automatically.
-    [_mapView setLightingMode:nil];
+    [_mapView setLightingMode:0];
     return;
   }
 

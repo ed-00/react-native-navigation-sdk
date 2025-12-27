@@ -16,7 +16,10 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-@import GoogleNavigation;
+#import <GoogleNavigation/GoogleNavigation.h>
+#import <CoreLocation/CoreLocation.h>
+
+NS_ASSUME_NONNULL_BEGIN
 
 @interface ObjectTranslationUtil : NSObject
 
@@ -34,3 +37,5 @@
 + (CLLocationCoordinate2D)getLocationCoordinateFrom:(NSDictionary *)latLngMap;
 + (BOOL)isIdOnUserData:(nullable id)userData;
 @end
+
+NS_ASSUME_NONNULL_END
